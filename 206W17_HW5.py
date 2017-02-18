@@ -5,12 +5,14 @@ import json
 
 ## SI 206 - W17 - HW5
 ## COMMENT WITH:
-## Your section day/time:
+## Your section day/time: Friday 9AM
 ## Any names of people you worked with on this assignment:
 
 ######## 500 points total ########
 
-## Write code that uses the tweepy library to search for tweets with a phrase of the user's choice (should use the Python input function), and prints out the Tweet text and the created_at value (note that this will be in GMT time) of the first THREE tweets with at least 1 blank line in between each of them, e.g.
+## Write code that uses the tweepy library to search for tweets with a phrase of the user's choice 
+# (should use the Python input function), and prints out the Tweet text and the created_at value 
+# (note that this will be in GMT time) of the first THREE tweets with at least 1 blank line in between each of them, e.g.
 
 ## TEXT: I'm an awesome Python programmer.
 ## CREATED AT: Sat Feb 11 04:28:19 +0000 2017
@@ -22,11 +24,14 @@ import json
 
 ## You should cache all of the data from this exercise in a file, and submit the cache file along with your assignment. 
 
-## So, for example, if you submit your assignment files, and you have already searched for tweets about "rock climbing", when we run your code, the code should use CACHED data, and should not need to make any new request to the Twitter API. 
-## But if, for instance, you have never searched for "bicycles" before you submitted your final files, then if we enter "bicycles" when we run your code, it _should_ make a request to the Twitter API.
+## So, for example, if you submit your assignment files, and you have already searched for tweets 
+## about "rock climbing", when we run your code, the code should use CACHED data, and should not  need to make any new request to the Twitter API. 
+## But if, for instance, you have never searched for "bicycles" before you submitted your final files, 
+## then if we enter "bicycles" when we run your code, it _should_ make a request to the Twitter API.
 
 ## The lecture notes and exercises from this week will be very helpful for this. 
-## Because it is dependent on user input, there are no unit tests for this -- we will run your assignments in a batch to grade them!
+## Because it is dependent on user input, there are no unit tests for this -- we will run your assignments 
+# in a batch to grade them!
 
 ## We've provided some starter code below, like what is in the class tweepy examples.
 
@@ -35,10 +40,10 @@ import json
 ## **** If you choose not to do that, we strongly advise using authentication information for an 'extra' Twitter account you make just for this class, and not your personal account, because it's not ideal to share your authentication information for a real account that you use frequently.
 
 ## Get your secret values to authenticate to Twitter. You may replace each of these with variables rather than filling in the empty strings if you choose to do the secure way for 50 EC points
-consumer_key = "" 
-consumer_secret = ""
-access_token = ""
-access_token_secret = ""
+consumer_key = "0LUQNyJKuJXNFkq1Td9Xd4P6E" 
+consumer_secret = "SDcn2VAkt1lmBipDOwrPtyK7pVRR1ykYp9fmtTs3VgS8nmZZ1b"
+access_token = "833061822827724800-VEjrEuYbnxb30pf9rPnp1KDzeLLcF6r"
+access_token_secret = "cIUQ4wYbjVbaNOPoO2Zmj19bIsISzYHsKKkrltBmug8gG"
 ## Set up your authentication to Twitter
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
