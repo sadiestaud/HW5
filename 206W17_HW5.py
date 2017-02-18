@@ -29,9 +29,6 @@ import json
 ## But if, for instance, you have never searched for "bicycles" before you submitted your final files, 
 ## then if we enter "bicycles" when we run your code, it _should_ make a request to the Twitter API.
 
-## The lecture notes and exercises from this week will be very helpful for this. 
-## Because it is dependent on user input, there are no unit tests for this -- we will run your assignments 
-# in a batch to grade them!
 
 ## We've provided some starter code below, like what is in the class tweepy examples.
 
@@ -57,6 +54,17 @@ api = tweepy.API(auth, parser=tweepy.parsers.JSONParser()) # Set up library to g
 ## 3. Invoke your function, save the return value in a variable, and explore the data you got back!
 ## 4. With what you learn from the data -- e.g. how exactly to find the text of each tweet in the big nested structure -- write code to print out content from 3 tweets, as shown above.
 
+
+CACHE_FNAME = "cache_file.json"
+
+try:
+	cache_file = open(CACHE_FNAME, 'r')
+	cache_contents = cache_file.read()
+	CACHE_DICT = json.loads(cache_contents)
+	cache_file.close()
+
+except:
+	CACHE_DICT = {}
 
 
 
