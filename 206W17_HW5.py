@@ -49,14 +49,10 @@ api = tweepy.API(auth, parser=tweepy.parsers.JSONParser()) # Set up library to g
 ## Write the rest of your code here!
 
 #### Recommended order of tasks: ####
+
+
+
 ## 1. Set up the caching pattern start -- the dictionary and the try/except statement shown in class.
-## 2. Write a function to get twitter data that works with the caching pattern, so it either gets new data or caches data, 
-		# depending upon what the input to search for is. You can model this off the class exercise from Tuesday.
-## 3. Invoke your function, save the return value in a variable, and explore the data you got back!
-## 4. With what you learn from the data -- e.g. how exactly to find the text of each tweet 
-		# in the big nested structure -- write code to print out content from 3 tweets, as shown above.
-
-
 CACHE_FNAME = "cache_file.json"
 
 try:
@@ -69,31 +65,51 @@ except:
 	CACHE_DICT = {}
 
 
-
+## 2. Write a function to get twitter data that works with the caching pattern, so it either gets new data or caches data, 
+		# depending upon what the input to search for is. You can model this off the class exercise from Tuesday.
 def twitter_info(phrase):
-	public_tweets = api.home_timeline()
 
 	if phrase in CACHE_DICT:
-		print("using cache")
-		response_text = CACHE_DICT[phrase]
+		print("using cache\n")
+		response = CACHE_DICT[phrase]
 
 	else:
-		print("fetching")
+		print("fetching\n")
 		response = api.search(q=phrase)
-		# CACHE_DICT[phrase] = response.text
+		CACHE_DICT[phrase] = response
 		# response_text = response.text
 
-		# cache_file = open(CACHE_FNAME, 'w')
-		# cache_file.write(json.dumps(CACHE_DICT))
-		# cache_file.close()
+		cache_file = open(CACHE_FNAME, 'w')
+		cache_file.write(json.dumps(CACHE_DICT))
+		cache_file.close()
 
-	# response_dict = json.loads(text)
-	# return response_dict[0]
 	return response
 
+	# single_tweet = response[0]
+	# return single_tweet
+	# for tweet in response['statuses']:
+	# 	x = response['statuses'][0]['text']
+	
+	# return response['statuses'][0]['text']
 
 
-x = twitter_info("university of michigan")
-print(type(x))
 
+## 3. Invoke your function, save the return value in a variable, and explore the data you got back!
+x = input("Enter something to search twitter!: ")
+t_info = twitter_info(x)
+# print(t_info)
+## 4. With what you learn from the data -- e.g. how exactly to find the text of each tweet 
+		# in the big nested structure -- write code to print out content from 3 tweets, as shown above.
+tweets = []
+times = []
+for t in t_info['statuses']:
+	tweet = t['text']
+	time = t['created_at']
+	tweets.append(tweet)
+	times.append(time)
+
+for t in range(3):
+	print("TEXT: " + tweets[t])
+	print("CREATED AT: " + times[t]+"\n")
+		
 
